@@ -5,13 +5,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav gap-3">
         {% if app.user %}
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{{ path('app_home') }}">Home</a>
           </li>
           <li>
             <a class="nav-link" href="{{ path('app_profil')}}">Profil</a>
+          </li>
+          <li>
+            {% set styles = getStyles() %}
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Styles
+              </button>
+              <ul class="dropdown-menu">
+                {% for style in styles  %}
+                  <li>
+                    <a href="{{ path('app_style' ,{'id':style.id}) }}">{{ style.name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           </li>
           <li>
             <a class="nav-link" href="{{ path('app_logout') }}">Se deconnecter</a>
