@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArtistController!{% endblock %}
+
+{% block body %}
+    {% for artist in artists %}
+        <p>{{ artist.artistName }}</p>
+    {% endfor %}
+{% endblock %}

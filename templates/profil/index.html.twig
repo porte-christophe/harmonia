@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ user.name }}{% endblock %}
+
+{% block body %}
+
+    <h1>Je suis {{ user.name }}.</h1>
+    <h2>Playlists</h2>
+    <ul>
+        {% for playlist in user.playlists %}
+            <li>
+                <a href="{{ path('app_playlist', {'id':playlist.id}) }}">{{ playlist.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>-------------------------------------------------</p>
+    <h2>Historique d'écoutes</h2>
+    <ul>
+        {% for listen in user.listens %}
+            <li>
+                <p>{{ listen.track.title }}</p>
+                <p>{{ listen.createdAt | date('d/m/Y h:i:s') }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>-------------------------------------------------</p>
+    <h2>favoris</h2>
+    <ul>
+        {% for favori in user.favoris %}
+            <li>
+                <p>{{ favori.track.title }}</p>
+                <p>{{ favori.createdAt | date('d/m/Y h:i:s') }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    
+
+{% endblock %}

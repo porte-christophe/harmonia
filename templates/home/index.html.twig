@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <h2>Les EPs:</h2>
+        {% for ep  in eps%}
+            <div class="col-3 g-2">
+                {% include 'components/album-card.html.twig' with {album:ep} %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <h2>Les albums:</h2>
+        {% for album  in albums%}
+            <div class="col-3 g-2">
+                {% include 'components/album-card.html.twig' with {album:album} %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <h2>Les singles:</h2>
+        {% for single  in singles%}
+            <div class="col-3 g-2">
+                {% include 'components/album-card.html.twig' with {album:single} %}
+            </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

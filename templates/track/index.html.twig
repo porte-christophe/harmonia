@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Track: {{ track.title }}{% endblock %}
+
+{% block body %}
+
+    <div class="h-100">
+        <h1>{{ track.title }}</h1>
+        {% for style in track.styles %}
+            <a href="{{ path('app_style', {'id' : style.id}) }}">{{ style.name }}</a>
+        {% endfor %}
+    </div>   
+    {% if app.user %}
+        {% set favId = false %}
+        {% for favori in app.user.favoris %}
+            {% if favori.track.id === track.id  %}
+                {% set favId = true %}
+            {% endif %}
+            
+        {% endfor %}
+
+        {% if favId %}
+            <a class="nav-link" href="{{ path('app_favori', {'id' : track.id})}}">Retirer des Favoris</a>
+        {% else %}
+                <a class="nav-link" href="{{ path('app_favori', {'id' : track.id})}}">Ajouter aux Favoris</a>
+        {% endif %}
+        
+         
+        
+    {% endif %}
+                
+    
+        
+{% endblock %}

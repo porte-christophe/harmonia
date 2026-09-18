@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album: {{ album.title }}{% endblock %}
+
+{% block body %}
+    <div class="card h-100">
+        <img src="{{ asset(album.jacket) }}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ album.title }}</h5>
+            <p class="card-text">{{  album.type }}</p>
+            <p class="card-text">Durée totale: {{  dureeTotale | date('h:i:s') }}</p>
+            <p class="card-text">Année de sortie: {{  album.releaseDate | date('Y')}}</p>
+            <p class="card-text">Artiste: {{  album.artist.artistName }}</p>
+            <a href="{{ path('app_add_track', {'id' :album.id}) }}">Ajouter une musique</a>
+            {% for track  in album.tracks %}
+                <li>
+                    <a href="{{ path('app_track_item', {'id' : track.id}) }}">{{ track.title }}</a>
+                    <p>Durée: {{ track.duration | date('i:s') }}</p>
+                </li>
+            {% endfor %}
+        </div>
+    </div>           
+    
+        
+{% endblock %}
