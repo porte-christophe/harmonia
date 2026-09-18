@@ -36,10 +36,13 @@ final class FavoriController extends AbstractController
             $favori->setUser($user);
             $em->persist($favori);
             $em->flush();
+            return $this->json(["created"=>true]);
+
         } elseif ($favori && $user && $track) {
             $em->remove($favori);
             $em->flush();
+            return $this->json(["created"=>false]);
+
         }
-        return $this->redirectToRoute('app_track_item', ['id' => $id]);
     }
 }

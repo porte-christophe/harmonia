@@ -14,9 +14,9 @@
         
 
         {% if isFav %}
-            <a class="nav-link" href="{{ path('app_favori', {'id' : track.id})}}">Retirer des Favoris</a>
+            <button id="my-super-btn" data_trackId="{{ track.id }}">Retirer des favoris</button>
         {% else %}
-                <a class="nav-link" href="{{ path('app_favori', {'id' : track.id})}}">Ajouter aux Favoris</a>
+            <button id="my-super-btn" data_trackId="{{ track.id }}">Ajouter aux Favoris</button>
         {% endif %}
         
          

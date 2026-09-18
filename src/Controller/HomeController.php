@@ -18,7 +18,7 @@ final class HomeController extends AbstractController
         $singles = $albumsRepository->findBy(["type" => "Single"]);
 
         $user = $this->getUser();
-        dump($user);
+        //dump($user);
         return $this->render('home/index.html.twig', [
             'eps' => $eps,
             'albums' => $albums,
